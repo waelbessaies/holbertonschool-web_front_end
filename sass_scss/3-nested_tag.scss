@@ -1,0 +1,12 @@
+// styling
+$margin: 0px;
+$padding: 0px;
+$secondmarging :10px;
+
+body {
+    margin:$margin;
+    padding:$padding;
+    p {
+        margin:$secondmarging;
+    }
+}

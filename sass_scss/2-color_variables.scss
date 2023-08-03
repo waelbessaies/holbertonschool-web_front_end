@@ -1,0 +1,17 @@
+// styling
+$maincolor: #3D3D3D;
+$secondarycolor: #6D6D6D;
+
+body{
+
+    color:$maincolor ;
+    background-color :$secondarycolor ;
+}
+
+p {
+    color: $maincolor;
+}
+
+h2 {
+    background-color: $secondarycolor;
+}
