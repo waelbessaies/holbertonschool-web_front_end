@@ -1,0 +1,14 @@
+// styling
+
+@mixin margin-styling($left, $right) {
+    margin-left: $left;
+    margin-right: $right;
+  }
+  
+  body {
+    @include margin-styling(10px, 10px);
+  }
+  
+  div {
+    @include margin-styling(15px, 15px);
+  }
