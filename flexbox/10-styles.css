@@ -439,7 +439,7 @@ ul.row {
     justify-content: space-between;
     align-items: center;
 }
-;
+
 .header {
     padding: var(--header-padding);
     position: relative;
@@ -543,11 +543,13 @@ ul.row {
     background-size: 90rem auto;
     background-color: #010101;
 }
+
 .section-hero .section-body {
     padding: 10rem 4rem;
 }
+
 .section-hero .section-category {
-    color:  var(--color-white);
+    color: var(--color-white);
     text-transform: uppercase;
 }
 
