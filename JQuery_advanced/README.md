@@ -8,6 +8,7 @@ Learn the different ways to createDOMelementswithjQuery
 Learn how to modify elements
 
 Learn how to add new elements to a page with different positions
+
 Learn how to add a click handler on an element
 
 Learn how to send GET, POST, DELETE or any type of AJAX query with jQuery
