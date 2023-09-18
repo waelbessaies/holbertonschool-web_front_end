@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Task 11</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <script type="application/javascript">
+        function addPostRow(data) {
+            var paragraph = $('<p></p>').html('<span>Post created with id ' + data.id + ', title: ' + data.title + ', author: ' + data.author + '</span>');
+            $('body').append(paragraph);
+        }
+
+        function listPosts() {
+            $.get('http://localhost:3000/posts', function (data, status) {
+                if (status === 'success') {
+                    data.forEach(function (post) {
+                        addPostRow(post);
+                    });
+                } else {
+                    alert('Server Error');
+                }
+            });
+        }
+
+        function buildForm() {
+            var form = $('<form></form>');
+            var authorDiv = $('<div></div>');
+            var titleLabel = $('<label for="author">Author</label>');
+            var authorInput = $('<input type="text" id="author" />');
+            var titleDiv = $('<div></div>');
+            var authorLabel = $('<label for="title">Title</label>');
+            var titleTextarea = $('<textarea id="title"></textarea>');
+            var submitInput = $('<input type="submit" />');
+
+            authorLabel.click(function () {
+                authorInput.select();
+            });
+
+            authorInput.keypress(function (e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+                    form.submit();
+                }
+            });
+
+            form.submit(function (event) {
+                event.preventDefault();
+                sendForm();
+            });
+
+            $('body').append(form);
+            form.append(authorDiv, titleDiv, submitInput);
+            authorDiv.append(titleLabel, authorInput);
+            titleDiv.append(authorLabel, titleTextarea);
+        }
+
+        function sendForm() {
+            $('form').after('<p>About to send the query to the API</p>');
+
+            var data = {
+                title: $('#title').val(),
+                author: $('#author').val()
+            };
+
+            $.post('http://localhost:3000/posts', data, function (response, status) {
+                if (status === 'success') {
+                    addPostRow(response);
+                    $('form').after('<p>Query successfully sent</p>');
+                } else {
+                    alert('Error sending the POST query');
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            listPosts();
+            buildForm();
+        });
+    </script>
+</body>
+
+</html>
